@@ -1,3 +1,4 @@
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,6 +6,8 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+@kotlin.Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -13,4 +16,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Starter Project"
-include ':app'
+include(":app")
