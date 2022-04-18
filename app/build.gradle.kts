@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -36,6 +37,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+detekt {
+    config = files("${rootProject.projectDir}/config/detekt/detekt.yml")
 }
 
 dependencies {

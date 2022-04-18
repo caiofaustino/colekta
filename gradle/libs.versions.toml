@@ -20,3 +20,4 @@ compose = ["compose-ui", "compose-ui-tooling-preview", "compose.material"]
 android-app = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version = "1.20.0"}
