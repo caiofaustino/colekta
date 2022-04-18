@@ -46,16 +46,15 @@ android {
 }
 
 dependencies {
-    implementation(libs.coreKtx)
+    implementation(libs.core.ktx)
     implementation(libs.bundles.compose)
     debugImplementation(libs.compose.ui.tooling)
 
-    implementation(libs.lifecycle.runtimeKtx)
+    implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
 
     testImplementation(testLibs.junit)
-    androidTestImplementation(instrumentedTestLibs.junitExt)
+    androidTestImplementation(instrumentedTestLibs.junit.ext)
     androidTestImplementation(instrumentedTestLibs.espresso)
     androidTestImplementation(instrumentedTestLibs.compose.junit4)
-
 }
