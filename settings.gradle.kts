@@ -20,10 +20,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-}
 
-@kotlin.Suppress("UnstableApiUsage")
-dependencyResolutionManagement {
     versionCatalogs {
         create("testLibs") {
             from(files("gradle/test-libs.versions.toml"))
