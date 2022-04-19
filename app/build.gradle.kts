@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.detekt)
-    alias(libs.plugins.ktlint)
+    codeChecks
 }
 
 android {
@@ -27,6 +26,9 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     buildFeatures {
         compose = true
     }
@@ -40,17 +42,12 @@ android {
     }
 }
 
-detekt {
-    config = files("${rootProject.projectDir}/config/detekt/detekt.yml")
-}
-
 dependencies {
     implementation(libs.core.ktx)
-    implementation(libs.bundles.compose)
-    debugImplementation(libs.compose.ui.tooling)
-
     implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.bundles.compose)
     implementation(libs.activity.compose)
+    debugImplementation(libs.compose.ui.tooling)
 
     testImplementation(testLibs.junit)
     androidTestImplementation(instrumentedTestLibs.junit.ext)
