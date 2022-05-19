@@ -5,6 +5,7 @@ plugins {
 }
 
 android {
+    namespace = "dev.caiofaustino.starter"
     compileSdk = 32
 
     defaultConfig {
