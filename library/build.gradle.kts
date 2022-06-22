@@ -1,24 +1,19 @@
 plugins {
-    alias(libs.plugins.android.app)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     codeChecks
 }
 
 android {
-    namespace = "dev.caiofaustino.starter"
+    namespace = "dev.caiofaustino.library"
     compileSdk = 32
 
     defaultConfig {
-        applicationId = "dev.caiofaustino.starter"
         minSdk = 21
         targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -27,30 +22,18 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
-    implementation(projects.library)
-
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.bundles.compose)
-    implementation(libs.activity.compose)
-    debugImplementation(libs.compose.ui.tooling)
 
     testImplementation(testLibs.junit)
     androidTestImplementation(instrumentedTestLibs.junit.ext)
