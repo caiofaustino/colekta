@@ -5,16 +5,16 @@ plugins {
 
 android {
     namespace = "dev.caiofaustino.starter"
-    compileSdk = ProjectConfig.compileSdk
+    compileSdk = ProjectConfig.COMPILE_SDK
 
     defaultConfig {
-        applicationId = ProjectConfig.applicationId
-        minSdk = ProjectConfig.minSdk
-        targetSdk = ProjectConfig.targetSdk
-        versionCode = ProjectConfig.versionCode
-        versionName = ProjectConfig.versionName
+        applicationId = ProjectConfig.APP_ID
+        minSdk = ProjectConfig.MIN_SDK
+        targetSdk = ProjectConfig.TARGET_SDK
+        versionCode = ProjectConfig.VERSION_CODE
+        versionName = ProjectConfig.VERSION_NAME
 
-        testInstrumentationRunner = ProjectConfig.androidJUnitRunner
+        testInstrumentationRunner = ProjectConfig.ANDROID_JUNIT_RUNNER
 
         vectorDrawables {
             useSupportLibrary = true

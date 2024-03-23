@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "dev.caiofaustino.library"
-    compileSdk = ProjectConfig.compileSdk
+    compileSdk = ProjectConfig.COMPILE_SDK
 
     defaultConfig {
-        minSdk = ProjectConfig.minSdk
+        minSdk = ProjectConfig.MIN_SDK
 
-        testInstrumentationRunner = ProjectConfig.androidJUnitRunner
+        testInstrumentationRunner = ProjectConfig.ANDROID_JUNIT_RUNNER
         consumerProguardFiles("consumer-rules.pro")
     }
 

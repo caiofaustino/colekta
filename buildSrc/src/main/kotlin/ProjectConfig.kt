@@ -1,10 +1,10 @@
 object ProjectConfig {
-    const val applicationId = "dev.caiofaustino.starter"
-    const val compileSdk = 32
-    const val minSdk = 21
-    const val targetSdk = 32
-    const val versionCode = 1
-    const val versionName = "1.0"
+    const val APP_ID = "dev.caiofaustino.starter"
+    const val COMPILE_SDK = 32
+    const val MIN_SDK = 21
+    const val TARGET_SDK = 32
+    const val VERSION_CODE = 1
+    const val VERSION_NAME = "1.0"
 
-    const val androidJUnitRunner = "androidx.test.runner.AndroidJUnitRunner"
+    const val ANDROID_JUNIT_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 }
