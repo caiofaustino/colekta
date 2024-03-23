@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
-    codeChecks
 }
 
 android {
