@@ -5,7 +5,3 @@ plugins {
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.ktlint.gradle) apply false
 }
-
-tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
-}

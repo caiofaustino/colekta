@@ -29,12 +29,18 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     buildFeatures {
         compose = true
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.compose.ui.asProvider().get().version
+        kotlinCompilerExtensionVersion = libs.compose.compiler.get().version
     }
 
     packaging {
@@ -55,9 +61,15 @@ dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
-    implementation(libs.bundles.compose)
-    implementation(libs.activity.compose)
+
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.graphics)
+    implementation(libs.compose.ui.tooling.preview)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.activity.compose)
     debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.ui.test.manifest)
 
     ktlintRuleset(libs.ktlint.compose)
     detektPlugins(libs.detekt.compose)

@@ -1,31 +1,49 @@
 [versions]
-android-gradle = "8.4.0"
-kotlin = "1.9.23"
-compose = "1.6.4"
-ktlint = "1.2.1"
-ktlint-gradle = "12.1.1"
+# Plugins
+android-gradle = "8.4.1"
+kotlin = "1.9.24"
 detekt = "1.23.6"
+ktlint-gradle = "12.1.1"
+
+# Libraries
+androidx-core-ktx = "1.13.1"
+lifecycle-runtime-ktx = "2.8.0"
+compose-bom = "2024.05.00"
+activity-cmpose = "1.9.0"
+
+# Code Quality
+ktlint = "1.2.1"
 compose-rules = "0.4.1"
 
+# Tests
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+
 [plugins]
-android-app = { id = "com.android.application", version.ref = "android-gradle" }
-android-library = { id = "com.android.library", version.ref = "android-gradle" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-ktlint-gradle = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-gradle" }
+android-app =       { id = "com.android.application", version.ref = "android-gradle" }
+android-library =   { id = "com.android.library", version.ref = "android-gradle" }
+kotlin-android =    { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+detekt =            { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+ktlint-gradle =     { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-gradle" }
 
 [libraries]
-core-ktx =                    { group = "androidx.core",              name = "core-ktx",              version = "1.12.0" }
-lifecycle-runtime-ktx =       { group = "androidx.lifecycle",         name = "lifecycle-runtime-ktx", version = "2.7.0" }
-compose-ui =                  { group = "androidx.compose.ui",        name = "ui",                    version.ref = "compose" }
-compose-ui-tooling =          { group = "androidx.compose.ui",        name = "ui-tooling",            version.ref = "compose" }
-compose-ui-tooling-preview =  { group = "androidx.compose.ui",        name = "ui-tooling-preview",    version.ref = "compose" }
-compose-material =            { group = "androidx.compose.material",  name = "material",              version.ref = "compose" }
-activity-compose =            { group = "androidx.activity",          name = "activity-compose",      version = "1.8.2" }
+core-ktx =                    { group = "androidx.core",              name = "core-ktx",              version.ref = "androidx-core-ktx" }
+lifecycle-runtime-ktx =       { group = "androidx.lifecycle",         name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 
+androidx-compose-bom =          { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-compiler =              { group = "androidx.compose.compiler", name = "compiler" }
+compose-ui =                    { group = "androidx.compose.ui", name = "ui" }
+compose-ui-graphics =           { group = "androidx.compose.ui", name = "ui-graphics" }
+compose-ui-tooling =            { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-tooling-preview =    { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-material3 =    { group = "androidx.compose.material3", name = "material3" }
+androidx-activity-compose =     { group = "androidx.activity", name = "activity-compose", version.ref = "activity-cmpose" }
+
+# Code Quality
 ktlint-compose = { module = "io.nlopez.compose.rules:ktlint", version.ref = "compose-rules" }
 detekt-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "compose-rules" }
 
-
-[bundles]
-compose = ["compose-ui", "compose-ui-tooling-preview", "compose-material"]
+# Testing
+compose-ui-test-manifest =  { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-ui-test-junit4 =    { group = "androidx.compose.ui", name = "ui-test-junit4" }
