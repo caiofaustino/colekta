@@ -30,17 +30,21 @@ android {
         }
     }
 
-    buildFeatures {
-        compose = true
-    }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.compose.compiler.get().version
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 
     packaging {
