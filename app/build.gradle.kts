@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.app)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ktlint.gradle)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -30,14 +32,22 @@ android {
     buildFeatures {
         compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.get()
+        kotlinCompilerExtensionVersion = libs.compose.ui.asProvider().get().version
     }
-    packagingOptions {
+
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+}
+
+detekt {
+    config.setFrom(
+        rootDir.resolve("config/detekt/detekt.yml"),
+    )
 }
 
 dependencies {
@@ -48,6 +58,9 @@ dependencies {
     implementation(libs.bundles.compose)
     implementation(libs.activity.compose)
     debugImplementation(libs.compose.ui.tooling)
+
+    ktlintRuleset(libs.ktlint.compose)
+    detektPlugins(libs.detekt.compose)
 
     testImplementation(testLibs.junit)
     androidTestImplementation(instrumentedTestLibs.junit.ext)

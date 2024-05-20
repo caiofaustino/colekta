@@ -2,15 +2,17 @@
 android-gradle = "8.4.0"
 kotlin = "1.9.23"
 compose = "1.6.4"
-detekt = "1.23.4"
-ktlint = "10.2.1"
+ktlint = "1.2.1"
+ktlint-gradle = "12.1.1"
+detekt = "1.23.6"
+compose-rules = "0.4.1"
 
 [plugins]
 android-app = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+ktlint-gradle = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint-gradle" }
 
 [libraries]
 core-ktx =                    { group = "androidx.core",              name = "core-ktx",              version = "1.12.0" }
@@ -20,6 +22,9 @@ compose-ui-tooling =          { group = "androidx.compose.ui",        name = "ui
 compose-ui-tooling-preview =  { group = "androidx.compose.ui",        name = "ui-tooling-preview",    version.ref = "compose" }
 compose-material =            { group = "androidx.compose.material",  name = "material",              version.ref = "compose" }
 activity-compose =            { group = "androidx.activity",          name = "activity-compose",      version = "1.8.2" }
+
+ktlint-compose = { module = "io.nlopez.compose.rules:ktlint", version.ref = "compose-rules" }
+detekt-compose = { module = "io.nlopez.compose.rules:detekt", version.ref = "compose-rules" }
 
 
 [bundles]

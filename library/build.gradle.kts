@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ktlint.gradle)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -20,15 +22,20 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
+}
+
+detekt {
+    config.setFrom(
+        rootDir.resolve("config/detekt/detekt.yml"),
+    )
 }
 
 dependencies {
     implementation(libs.core.ktx)
     implementation(libs.lifecycle.runtime.ktx)
+
+    ktlintRuleset(libs.ktlint.compose)
+    detektPlugins(libs.detekt.compose)
 
     testImplementation(testLibs.junit)
     androidTestImplementation(instrumentedTestLibs.junit.ext)
