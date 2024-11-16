@@ -2,7 +2,11 @@
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 rootProject.name = "StarterProject"
-include(":app", ":library")
+include(
+    ":app",
+    ":library",
+    ":mvi",
+)
 
 pluginManagement {
     repositories {
@@ -12,7 +16,7 @@ pluginManagement {
     }
 }
 
-@kotlin.Suppress("UnstableApiUsage")
+@Suppress("UnstableApiUsage")
 dependencyResolutionManagement {
     // If this mode is set, any repository declared directly in a project,
     // either directly or via a plugin, will trigger a build error.

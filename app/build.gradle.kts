@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose.compiler)
+    alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.ktlint.gradle)
     alias(libs.plugins.detekt)
 }
@@ -60,7 +62,7 @@ detekt {
 }
 
 dependencies {
-//    implementation(projects.mvi)
+    implementation(projects.mvi)
 
     // https://developer.android.com/jetpack/androidx/releases/core
     implementation(libs.androidx.core.ktx)
