@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.ktlint.gradle)
     alias(libs.plugins.detekt)
 }
@@ -28,6 +27,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 detekt {
@@ -46,6 +49,4 @@ dependencies {
     testImplementation(testLibs.junit)
     androidTestImplementation(instrumentedTestLibs.androidx.junit)
     androidTestImplementation(instrumentedTestLibs.androidx.espresso.core)
-    androidTestImplementation(platform(instrumentedTestLibs.androidx.compose.bom))
-    androidTestImplementation(instrumentedTestLibs.compose.ui.test.junit4)
 }

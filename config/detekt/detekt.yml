@@ -579,8 +579,9 @@ style:
         value: 'FIXME:'
       - reason: 'Forbidden STOPSHIP todo marker in comment, please address the problem before shipping the code.'
         value: 'STOPSHIP:'
-      - reason: 'Forbidden TODO todo marker in comment, please do the changes.'
-        value: 'TODO:'
+      # Allow TODOs
+    #      - reason: 'Forbidden TODO todo marker in comment, please do the changes.'
+    #        value: 'TODO:'
     allowedPatterns: ''
   ForbiddenImport:
     active: false
@@ -740,7 +741,7 @@ style:
   UnusedPrivateMember:
     active: true
     allowedNames: ''
-    ignoreAnnotated: ['Preview']
+    ignoreAnnotated: ['Preview','PreviewThemes']
   UnusedPrivateProperty:
     active: true
     allowedNames: '_|ignored|expected|serialVersionUID'
