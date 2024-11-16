@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.ktlint.gradle)
     alias(libs.plugins.detekt)
 }
@@ -36,14 +37,15 @@ detekt {
 }
 
 dependencies {
-    implementation(libs.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     ktlintRuleset(libs.ktlint.compose)
     detektPlugins(libs.detekt.compose)
 
     testImplementation(testLibs.junit)
-    androidTestImplementation(instrumentedTestLibs.junit.ext)
-    androidTestImplementation(instrumentedTestLibs.espresso)
-    androidTestImplementation(instrumentedTestLibs.compose.junit4)
+    androidTestImplementation(instrumentedTestLibs.androidx.junit)
+    androidTestImplementation(instrumentedTestLibs.androidx.espresso.core)
+    androidTestImplementation(platform(instrumentedTestLibs.androidx.compose.bom))
+    androidTestImplementation(instrumentedTestLibs.compose.ui.test.junit4)
 }
