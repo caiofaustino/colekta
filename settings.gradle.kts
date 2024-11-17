@@ -6,6 +6,7 @@ include(
     ":app",
     ":library",
     ":mvi",
+    ":collection"
 )
 
 pluginManagement {
@@ -35,5 +36,3 @@ dependencyResolutionManagement {
         }
     }
 }
-
-
