@@ -1,4 +1,4 @@
-package dev.caiofaustino.starter
+package dev.caiofaustino.colekta
 
 import org.junit.Assert.assertEquals
 import org.junit.Test

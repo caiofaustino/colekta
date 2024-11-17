@@ -1,4 +1,4 @@
-package dev.caiofaustino.starter.main
+package dev.caiofaustino.colekta.main
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -6,10 +6,10 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import dev.caiofaustino.mvi.MviStore
-import dev.caiofaustino.starter.main.mvi.MainAction
-import dev.caiofaustino.starter.main.mvi.MainProcessor
-import dev.caiofaustino.starter.main.mvi.MainReducer
-import dev.caiofaustino.starter.main.mvi.MainUiState
+import dev.caiofaustino.colekta.main.mvi.MainAction
+import dev.caiofaustino.colekta.main.mvi.MainProcessor
+import dev.caiofaustino.colekta.main.mvi.MainReducer
+import dev.caiofaustino.colekta.main.mvi.MainUiState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

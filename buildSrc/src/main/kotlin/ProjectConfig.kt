@@ -1,6 +1,6 @@
 object ProjectConfig {
 
-    const val APP_ID = "dev.caiofaustino.starter"
+    const val APP_ID = "dev.caiofaustino.colekta"
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
 

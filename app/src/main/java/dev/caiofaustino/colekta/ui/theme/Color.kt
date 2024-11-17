@@ -1,4 +1,4 @@
-package dev.caiofaustino.starter.ui.theme
+package dev.caiofaustino.colekta.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

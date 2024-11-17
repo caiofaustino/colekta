@@ -1,4 +1,4 @@
-package dev.caiofaustino.starter.main.composable
+package dev.caiofaustino.colekta.main.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,11 +14,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.caiofaustino.starter.main.MainViewModel
-import dev.caiofaustino.starter.main.mvi.MainAction
-import dev.caiofaustino.starter.main.mvi.MainUiState
-import dev.caiofaustino.starter.ui.preview.PreviewThemes
-import dev.caiofaustino.starter.ui.theme.MyAppTheme
+import dev.caiofaustino.colekta.main.MainViewModel
+import dev.caiofaustino.colekta.main.mvi.MainAction
+import dev.caiofaustino.colekta.main.mvi.MainUiState
+import dev.caiofaustino.colekta.ui.preview.PreviewThemes
+import dev.caiofaustino.colekta.ui.theme.MyAppTheme
 
 @Composable
 fun MainScreen(viewModel: MainViewModel) {

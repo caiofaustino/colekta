@@ -1,4 +1,4 @@
-package dev.caiofaustino.starter.ui.theme
+package dev.caiofaustino.colekta.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

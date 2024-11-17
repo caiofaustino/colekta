@@ -1,8 +1,8 @@
-package dev.caiofaustino.starter.main.mvi
+package dev.caiofaustino.colekta.main.mvi
 
 import android.util.Log
 import dev.caiofaustino.mvi.MviProcessor
-import dev.caiofaustino.starter.main.mvi.MainAction.ButtonClicked
+import dev.caiofaustino.colekta.main.mvi.MainAction.ButtonClicked
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

@@ -1,4 +1,4 @@
-package dev.caiofaustino.starter.main.mvi
+package dev.caiofaustino.colekta.main.mvi
 
 import android.os.Parcelable
 import dev.caiofaustino.mvi.UiState

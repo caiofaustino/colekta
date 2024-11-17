@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.caiofaustino.starter"
+    namespace = "dev.caiofaustino.colekta"
     compileSdk = ProjectConfig.COMPILE_SDK
 
     defaultConfig {
