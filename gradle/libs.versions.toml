@@ -12,6 +12,7 @@ ktlint-gradle = "12.1.1"
 # -- Libraries --
 #Kotlin
 coroutines = "1.9.0"
+kotlinx-serialization = "1.7.3"
 
 # Android
 androidx-core = "1.15.0"
@@ -20,6 +21,7 @@ androidx-lifecycle = "2.8.7"
 # Compose
 activityCompose = "1.9.3"
 composeBom = "2024.11.00" # Sync with instrumented-test-libs.versions
+navigation-compose = "2.8.4"
 
 # Code Checks
 compose-rules = "0.4.1"
@@ -51,6 +53,9 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 [libraries]
 # -- Kotlin --
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+
+# -- Kotlin Android --
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
 # -- Android --
@@ -67,7 +72,7 @@ androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lif
 # Saved state module for ViewModel
 androidx-lifecycle-viewmodel-savedstate = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-savedstate", version.ref = "androidx-lifecycle" }
 
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
 
 # Compose
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -77,6 +82,9 @@ compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 #compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose",version.ref = "navigation-compose"  }
 
 # Code Quality
 ktlint-compose = { module = "io.nlopez.compose.rules:ktlint", version.ref = "compose-rules" }

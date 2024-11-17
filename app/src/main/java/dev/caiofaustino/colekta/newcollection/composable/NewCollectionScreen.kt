@@ -22,7 +22,7 @@ import dev.caiofaustino.colekta.newcollection.NewCollectionViewModel
 import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionAction
 import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionUiState
 import dev.caiofaustino.colekta.ui.preview.PreviewThemes
-import dev.caiofaustino.colekta.ui.theme.MyAppTheme
+import dev.caiofaustino.colekta.ui.theme.ColektaTheme
 
 @Composable
 fun NewCollectionScreen(viewModel: NewCollectionViewModel) {
@@ -74,7 +74,7 @@ private fun NewCollection(
 @PreviewThemes
 @Composable
 private fun PreviewThemes() {
-    MyAppTheme {
+    ColektaTheme {
         Surface {
             NewCollection(
                 state = NewCollectionUiState(),

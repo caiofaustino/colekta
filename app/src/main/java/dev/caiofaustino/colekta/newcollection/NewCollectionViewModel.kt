@@ -5,9 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import dev.caiofaustino.colekta.main.MainViewModel
-import dev.caiofaustino.colekta.main.mvi.MainProcessor
-import dev.caiofaustino.colekta.main.mvi.MainReducer
 import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionAction
 import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionProcessor
 import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionReducer
@@ -51,9 +48,9 @@ class NewCollectionViewModel(
         val factory =
             viewModelFactory {
                 initializer {
-                    MainViewModel(
-                        processor = MainProcessor(),
-                        reducer = MainReducer(),
+                    NewCollectionViewModel(
+                        processor = NewCollectionProcessor(),
+                        reducer = NewCollectionReducer(),
                         savedState = createSavedStateHandle(),
                     )
                 }

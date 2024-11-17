@@ -17,12 +17,20 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.caiofaustino.colekta.main.MainViewModel
 import dev.caiofaustino.colekta.main.mvi.MainAction
 import dev.caiofaustino.colekta.main.mvi.MainUiState
+import dev.caiofaustino.colekta.navigation.DestinationScreen
 import dev.caiofaustino.colekta.ui.preview.PreviewThemes
-import dev.caiofaustino.colekta.ui.theme.MyAppTheme
+import dev.caiofaustino.colekta.ui.theme.ColektaTheme
 
 @Composable
-fun MainScreen(viewModel: MainViewModel) {
+fun MainScreen(
+    viewModel: MainViewModel,
+    navigate: (destination: DestinationScreen) -> Unit
+) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+    val navigation by viewModel.navigation.collectAsStateWithLifecycle()
+
+    navigation?.let { navigate(it) }
+
     Main(
         state = state,
         onUserAction = { action ->
@@ -64,7 +72,7 @@ private fun Main(
 @PreviewThemes
 @Composable
 private fun PreviewThemes() {
-    MyAppTheme {
+    ColektaTheme {
         Surface {
             Main(
                 state = MainUiState(),
