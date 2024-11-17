@@ -11,7 +11,7 @@ ktlint-gradle = "12.1.1"
 
 # -- Libraries --
 #Kotlin
-coroutines = "1.9.0-RC"
+coroutines = "1.9.0"
 
 # Android
 androidx-core = "1.15.0"
@@ -50,6 +50,7 @@ detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 
 [libraries]
 # -- Kotlin --
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
 # -- Android --

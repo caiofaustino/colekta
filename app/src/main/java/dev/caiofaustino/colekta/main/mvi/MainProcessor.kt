@@ -2,7 +2,7 @@ package dev.caiofaustino.colekta.main.mvi
 
 import android.util.Log
 import dev.caiofaustino.mvi.MviProcessor
-import dev.caiofaustino.colekta.main.mvi.MainAction.ButtonClicked
+import dev.caiofaustino.colekta.main.mvi.MainAction.CreateCollection
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -13,7 +13,7 @@ class MainProcessor : MviProcessor<MainAction, MainResult> {
 
     override fun process(action: MainAction) {
         when (action) {
-            ButtonClicked -> {
+            CreateCollection -> {
                 Log.e("TEST", "Button Clicked")
             }
         }
