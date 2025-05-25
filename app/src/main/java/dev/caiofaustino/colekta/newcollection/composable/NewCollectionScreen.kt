@@ -1,4 +1,4 @@
-package dev.caiofaustino.colekta.main.composable
+package dev.caiofaustino.colekta.newcollection.composable
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,30 +8,26 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.caiofaustino.colekta.main.MainViewModel
-import dev.caiofaustino.colekta.main.mvi.MainAction
-import dev.caiofaustino.colekta.main.mvi.MainUiState
-import dev.caiofaustino.colekta.navigation.DestinationScreen
+import dev.caiofaustino.colekta.newcollection.NewCollectionViewModel
+import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionAction
+import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionUiState
 import dev.caiofaustino.colekta.ui.preview.PreviewThemes
 import dev.caiofaustino.colekta.ui.theme.ColektaTheme
 
 @Composable
-fun MainScreen(
-    viewModel: MainViewModel,
-    navigate: (destination: DestinationScreen) -> Unit
-) {
+fun NewCollectionScreen(viewModel: NewCollectionViewModel) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val navigation by viewModel.navigation.collectAsStateWithLifecycle()
-
-    navigation?.let { navigate(it) }
-
-    Main(
+    NewCollection(
         state = state,
         onUserAction = { action ->
             viewModel.onUserAction(action)
@@ -40,9 +36,9 @@ fun MainScreen(
 }
 
 @Composable
-private fun Main(
-    state: MainUiState,
-    onUserAction: (action: MainAction) -> Unit,
+private fun NewCollection(
+    state: NewCollectionUiState,
+    onUserAction: (action: NewCollectionAction) -> Unit,
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -51,16 +47,22 @@ private fun Main(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier =
-                Modifier
-                    .padding(innerPadding)
-                    .fillMaxSize()
-                    .padding(25.dp),
+            Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .padding(25.dp),
         ) {
-            Text(text = state.text)
+            var text by remember { mutableStateOf("") }
+
+            TextField(
+                value = text,
+                onValueChange = { text = it },
+                label = { Text("Collection Name") }
+            )
             Button(
                 modifier = Modifier.padding(vertical = 10.dp),
                 onClick = {
-                    onUserAction(MainAction.CreateCollection)
+                    onUserAction(NewCollectionAction.CreateNewCollection(text))
                 },
             ) {
                 Text(text = "Create Collection")
@@ -74,8 +76,8 @@ private fun Main(
 private fun PreviewThemes() {
     ColektaTheme {
         Surface {
-            Main(
-                state = MainUiState(),
+            NewCollection(
+                state = NewCollectionUiState(),
                 onUserAction = {},
             )
         }

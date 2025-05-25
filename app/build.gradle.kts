@@ -11,7 +11,7 @@ plugins {
 }
 
 android {
-    namespace = "dev.caiofaustino.colekta"
+    namespace = ProjectConfig.APP_ID
     compileSdk = ProjectConfig.COMPILE_SDK
 
     defaultConfig {
@@ -63,6 +63,9 @@ detekt {
 
 dependencies {
     implementation(projects.mvi)
+    implementation(projects.collection)
+
+    implementation(libs.kotlinx.serialization.json)
 
     // https://developer.android.com/jetpack/androidx/releases/core
     implementation(libs.androidx.core.ktx)
@@ -80,7 +83,9 @@ dependencies {
     implementation(libs.compose.ui.graphics)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.navigation.compose)
 
     debugImplementation(libs.compose.ui.tooling)
 //    debugImplementation(libs.compose.ui.test.manifest)
