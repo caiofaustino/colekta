@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.detekt
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -68,15 +66,11 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
 
     // https://developer.android.com/jetpack/androidx/releases/core
-    implementation(libs.androidx.core.ktx)
-        ?.because("Better support for older Android versions")
+    implementation(libs.androidx.core.ktx)?.because("Better support for older Android versions")
     // https://developer.android.com/jetpack/androidx/releases/lifecycle#kts
-    implementation(libs.androidx.lifecycle.viewmodel)
-        ?.because("Adds ViewModel and sub-utilities.")
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-        ?.because("ViewModel utilities for Compose")
-    implementation(libs.androidx.lifecycle.runtime.compose)
-        ?.because("Lifecycle utilities for Compose")
+    implementation(libs.androidx.lifecycle.viewmodel)?.because("Adds ViewModel and sub-utilities.")
+    implementation(libs.androidx.lifecycle.viewmodel.compose)?.because("ViewModel utilities for Compose")
+    implementation(libs.androidx.lifecycle.runtime.compose)?.because("Lifecycle utilities for Compose")
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.compose.ui)
@@ -86,6 +80,8 @@ dependencies {
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
+
+    implementation(libs.logcat)
 
     debugImplementation(libs.compose.ui.tooling)
 //    debugImplementation(libs.compose.ui.test.manifest)

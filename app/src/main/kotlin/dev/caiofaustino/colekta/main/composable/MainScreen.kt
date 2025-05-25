@@ -27,7 +27,7 @@ fun MainScreen(
     navigate: (destination: DestinationScreen) -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    val navigation by viewModel.navigation.collectAsStateWithLifecycle()
+    val navigation by viewModel.navigation.collectAsStateWithLifecycle(null)
 
     navigation?.let { navigate(it) }
 

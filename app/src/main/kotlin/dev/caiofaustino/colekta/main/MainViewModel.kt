@@ -3,24 +3,28 @@ package dev.caiofaustino.colekta.main
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import dev.caiofaustino.colekta.main.mvi.MainAction
 import dev.caiofaustino.colekta.main.mvi.MainProcessor
 import dev.caiofaustino.colekta.main.mvi.MainReducer
+import dev.caiofaustino.colekta.main.mvi.MainSideEffect
 import dev.caiofaustino.colekta.main.mvi.MainUiState
-import dev.caiofaustino.colekta.navigation.CreateNewCollection
 import dev.caiofaustino.colekta.navigation.DestinationScreen
 import dev.caiofaustino.mvi.MviStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.scan
+import kotlinx.coroutines.flow.shareIn
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 private const val UI_STATE = "MAIN_UI_STATE"
 
@@ -41,14 +45,16 @@ class MainViewModel(
                 initialValue = savedState[UI_STATE] ?: MainUiState(),
             )
 
-    private val _navigation = MutableStateFlow<DestinationScreen?>(null)
-    val navigation: StateFlow<DestinationScreen?> = _navigation.asStateFlow()
+    private val _navigation = processor.sideEffectFlow
+        .filter { it is MainSideEffect.NavigateTo }
+        .map { (it as MainSideEffect.NavigateTo).destination }
+    val navigation: SharedFlow<DestinationScreen?> = _navigation
+        .shareIn(viewModelScope, SharingStarted.Lazily)
 
     fun onUserAction(userAction: MainAction) {
-        processor.process(userAction)
-
-        //TEST
-        _navigation.value = CreateNewCollection
+        viewModelScope.launch {
+            processor.process(userAction)
+        }
     }
 
     override fun onCleared() {
@@ -57,15 +63,14 @@ class MainViewModel(
     }
 
     companion object {
-        val factory =
-            viewModelFactory {
-                initializer {
-                    MainViewModel(
-                        processor = MainProcessor(),
-                        reducer = MainReducer(),
-                        savedState = createSavedStateHandle(),
-                    )
-                }
+        val factory = viewModelFactory {
+            initializer {
+                MainViewModel(
+                    processor = MainProcessor(),
+                    reducer = MainReducer(),
+                    savedState = createSavedStateHandle(),
+                )
             }
+        }
     }
 }

@@ -11,10 +11,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-//            val mainViewModel = viewModel<MainViewModel>(factory = MainViewModel.factory)
-//            MyAppTheme {
-//                MainScreen(viewModel = mainViewModel)
-//            }
             Colekta()
         }
     }

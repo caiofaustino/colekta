@@ -3,6 +3,7 @@ package dev.caiofaustino.colekta.newcollection
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.createSavedStateHandle
+import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import dev.caiofaustino.colekta.newcollection.mvi.NewCollectionAction
@@ -17,6 +18,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.scan
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 private const val UI_STATE = "NEW_COLLECTION_UI_STATE"
 
@@ -35,8 +37,11 @@ class NewCollectionViewModel(
                 started = SharingStarted.Lazily,
                 initialValue = savedState[UI_STATE] ?: NewCollectionUiState(),
             )
+
     fun onUserAction(userAction: NewCollectionAction) {
-        processor.process(userAction)
+        viewModelScope.launch {
+            processor.process(userAction)
+        }
     }
 
     override fun onCleared() {

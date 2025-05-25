@@ -1,20 +1,26 @@
 package dev.caiofaustino.colekta.main.mvi
 
-import android.util.Log
-import dev.caiofaustino.mvi.MviProcessor
 import dev.caiofaustino.colekta.main.mvi.MainAction.CreateCollection
-import kotlinx.coroutines.flow.Flow
+import dev.caiofaustino.colekta.main.mvi.MainSideEffect.NavigateTo
+import dev.caiofaustino.colekta.navigation.DestinationScreen.NewCollectionScreen
+import dev.caiofaustino.mvi.MviProcessor
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import logcat.logcat
 
-class MainProcessor : MviProcessor<MainAction, MainResult> {
+class MainProcessor : MviProcessor<MainAction, MainResult, MainSideEffect> {
     private val _resultFlow = MutableSharedFlow<MainResult>()
-    override val resultFlow: Flow<MainResult> = _resultFlow.asSharedFlow()
+    override val resultFlow: SharedFlow<MainResult> = _resultFlow.asSharedFlow()
 
-    override fun process(action: MainAction) {
+    private val _sideEffectFlow = MutableSharedFlow<MainSideEffect>()
+    override val sideEffectFlow: SharedFlow<MainSideEffect> = _sideEffectFlow.asSharedFlow()
+
+    override suspend fun process(action: MainAction) {
         when (action) {
             CreateCollection -> {
-                Log.e("TEST", "Button Clicked")
+                logcat { "Create Collection" }
+                _sideEffectFlow.emit(NavigateTo(NewCollectionScreen))
             }
         }
     }
